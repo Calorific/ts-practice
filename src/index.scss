@@ -62,16 +62,6 @@ body {
       background-size: cover;
       cursor: pointer;
 
-      &:first-child {
-        background-image: url('../public/images/summer.jpg');
-      }
-      &:nth-child(2) {
-        background-image: url('../public/images/fall.jpg');
-      }
-      &:last-child {
-        background-image: url('../public/images/winter.jpg');
-      }
-
       img {
         width: 30%;
         height: auto;
