@@ -1,0 +1,81 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('../public/fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+
+.background-image {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  //background-image: url('../public/images/summer.jpg');
+  z-index: -1;
+  transition: background-image 0.5s ease-in-out;
+  filter: blur(4px);
+}
+
+.container {
+  max-width: 1200px;
+
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+
+  .title {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 10px;
+    color: #ff622e;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    height: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+
+    .card {
+      width: 250px;
+      height: 250px;
+      border-radius: 20px;
+      border: 1px solid #808f90;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      cursor: pointer;
+
+      &:first-child {
+        background-image: url('../public/images/summer.jpg');
+      }
+      &:nth-child(2) {
+        background-image: url('../public/images/fall.jpg');
+      }
+      &:last-child {
+        background-image: url('../public/images/winter.jpg');
+      }
+
+      img {
+        width: 30%;
+        height: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
+  <title>Weather Sounds</title>
+</head>
+<body>
+<noscript>You have to enable JavaScript to use this site</noscript>
+<div class="background-image" id="background-image"></div>
+<div class="container">
+  <h1 class="title">Weather Sounds</h1>
+
+  <div class="cards" id="cards">
+    <div class="card" data-audio="summer"><img src="icons/summer.svg" alt="Sun" draggable="false"></div>
+    <div class="card" data-audio="fall"><img src="icons/fall.svg" alt="Rain" draggable="false"></div>
+    <div class="card" data-audio="winter"><img src="icons/winter.svg" alt="Snow" draggable="false"></div>
+  </div>
+
+  <input type="range" class="range" id="volume-changer" min="0" max="100" value="100">
+</div>
+</body>
+</html>
