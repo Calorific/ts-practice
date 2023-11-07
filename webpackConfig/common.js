@@ -6,24 +6,26 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   stats: 'errors-warnings',
   context: path.resolve(__dirname, '..', 'src'),
-  entry: './index.ts',
+  entry: './index.tsx',
   output: {
-    filename: '[name].[contenthash].js',
+    clean: true,
     path: path.resolve(__dirname, '..', 'dist'),
-    clean: true
+    filename: '[name].[hash:8].js',
+    sourceMapFilename: '[name].[hash:8].map',
+    chunkFilename: '[id].[hash:8].js'
   },
   resolve : {
     extensions: ['.tsx', '.ts', '.js', '.jsx']
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../src/index.html'),
+      template: path.resolve(__dirname, '../public/index.html'),
     }),
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, '../public'),
-          to: path.resolve(__dirname, '../dist')
+          from: path.resolve(__dirname, '../public/icons'),
+          to: path.resolve(__dirname, '../dist/icons')
         }
       ]
     }),
