@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
-import { useLocalStorage } from './hooks/useLocalStorage/useLocalStorage'
-import { useUpdateLogger } from './hooks/useUpdateLogger/useUpdateLogger'
+import { useToggle } from './hooks/useToggle/useToggle'
 
 export const App: FC = () => {
-  const [value, setValue] = useLocalStorage('value', '')
-
-  useUpdateLogger(value)
+  const [show, toggleShow] = useToggle(true)
 
   return <>
-    <input type="text" value={value} onChange={e => setValue(e.target.value)} />
+    <button onClick={() => toggleShow()}>Toggle text</button>
+    <button onClick={() => toggleShow(true)}>Show text</button>
+    <button onClick={() => toggleShow(false)}>Hide text</button>
+    <p style={{ display: show ? 'block' : 'none'}}>Text</p>
   </>
 }
