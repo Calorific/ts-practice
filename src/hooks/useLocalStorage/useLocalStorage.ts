@@ -1,17 +1,18 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useLocalStorageResult } from './types'
 
-export const useLocalStorage = <S>(key: string, initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>] => {
-  const getValue = (key: string, baseState: typeof initialState): S => {
-    const storageValue = localStorage.getItem(key)
-    if (storageValue) return JSON.parse(storageValue)
-    return baseState instanceof Function ? baseState() : baseState
+export const useLocalStorage = <S>(key: string): useLocalStorageResult => {
+  const [data, setData] = useState<string>('')
+
+  const setItem = (newData: string) => {
+    localStorage.setItem(key, newData)
+    setData(newData)
   }
 
-  const [value, setValue] = useState<S>(() => getValue(key, initialState))
+  const removeItem = () => {
+    localStorage.removeItem(key)
+    setData('')
+  }
 
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value))
-  }, [value])
-
-  return [value, setValue]
+  return [data, { setItem, removeItem }]
 }
