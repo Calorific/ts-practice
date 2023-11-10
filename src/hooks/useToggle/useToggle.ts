@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { useToggleResult } from './types'
 
-export const useToggle = (defaultValue: boolean): [boolean, (value?: boolean) => void] => {
-  const [value, setValue] = useState<boolean>(defaultValue)
+export const useToggle = <T = boolean>(options?: Array<T>): useToggleResult<T | boolean> => {
+  const [currentIdx, setCurrentIdx] = useState<number>(0)
+  const _options = options ?? [true, false]
 
-  const toggleValue = (value?: boolean): void => {
-    setValue(prevState => value !== undefined ? value : !prevState)
+  const toggle = (value?: T | boolean): void => {
+    if (!value) setCurrentIdx(prevState => (prevState + 1) % _options.length)
+    else setCurrentIdx(_options.findIndex(el => el === value))
   }
 
-  return [value, toggleValue]
+  return [_options[currentIdx], toggle]
 }
