@@ -3,6 +3,7 @@ import { UseFetchDemo } from './demos/useFetchDemo/useFetchDemo'
 import { UseLocalStorageDemo } from './demos/useLocalStorageDemo/useLocalStorageDemo'
 import { UseHoverDemo } from './demos/useHoverDemo/useHoverDemo'
 import { UseViewportSizeDemo } from './demos/useViewportSizeDemo/useViewportSizeDemo'
+import { UseWindowScrollDemo } from './demos/useWindowScrollDemo/useWindowScrollDemo'
 
 export const App: FC = () => {
 
@@ -14,5 +15,7 @@ export const App: FC = () => {
     <UseHoverDemo />
     <hr />
     <UseViewportSizeDemo />
+    <hr />
+    <UseWindowScrollDemo />
   </>
 }

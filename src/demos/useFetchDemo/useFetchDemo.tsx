@@ -5,11 +5,11 @@ import { Post } from './types'
 const url = 'https://jsonplaceholder.typicode.com/posts'
 
 export const UseFetchDemo: FC = () => {
-  const { data, isLoading, error, reFetch } = useFetch<Post[]>(url, { _limit: '4' })
+  const { data, isLoading, error, reFetch } = useFetch<Post[]>(url, { _limit: '50' })
 
   return (
     <>
-      <div>
+      <div style={{ width: '120%' }}>
         <button onClick={() => reFetch({ _limit: '3' })}>
           Перезапросить
         </button>
