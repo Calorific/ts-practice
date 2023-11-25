@@ -13,7 +13,8 @@ module.exports = merge(commonConfig,{
     host: '127.0.1.1',
     port: 3000,
     https: true,
-    watchFiles: ['src/**/*.html']
+    watchFiles: ['src/**/*.html'],
+    historyApiFallback: true,
   },
   plugins: [new ESLintPlugin()],
 })
