@@ -9,8 +9,9 @@ export const MainLayout: FC = () => {
       <Typography.Title level={2} style={{ marginTop: '7px' }}>Рик и морти</Typography.Title>
       <NavigationMenu />
     </div>
-
-    <Outlet />
+    <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+      <Outlet />
+    </div>
   </>
 }
 
