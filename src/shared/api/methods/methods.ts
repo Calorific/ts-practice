@@ -6,12 +6,12 @@ import Locations from '../data/locations.json'
 const delay = (ms: number): Promise<void> => new Promise(r => setTimeout(r, ms))
 
 const fetchCharacters = async (): Promise<Character[]> => {
-  await delay(0)
+  await delay(400)
   return Characters
 }
 
 const fetchCharacterById = async (id: string): Promise<Character | null> => {
-  await delay(0)
+  await delay(400)
   return Characters.find(c => c.id.toString() === id) || null
 }
 
@@ -25,8 +25,13 @@ const fetchLocations = async (): Promise<Location[]> => {
   return Locations
 }
 
+const fetchLocationById = async (id: string): Promise<Location | null> => {
+  await delay(0)
+  return Locations.find(c => c.id.toString() === id) || null
+}
+
 export const HttpService = {
   fetchCharacters, fetchCharacterById,
-  fetchEpisodes,
+  fetchEpisodes, fetchLocationById,
   fetchLocations
 }

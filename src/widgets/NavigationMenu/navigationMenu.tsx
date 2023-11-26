@@ -12,7 +12,7 @@ const items: MenuProps['items'] = [
     key: '/characters',
   },
   {
-    label: <NavLink to=''>Locations</NavLink>,
+    label: <NavLink to='locations'>Locations</NavLink>,
     key: '/locations',
   },
   {

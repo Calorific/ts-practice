@@ -4,7 +4,7 @@ import { Character } from '../../shared/api/methods/types'
 import { HttpService } from '../../shared/api/methods/methods'
 import { Card, Tag, Typography } from 'antd'
 
-export const CharacterDetailPage: FC = () => {
+export const CharacterDetailsPage: FC = () => {
   const { id } = useParams()
   const [character, setCharacter] = useState<Character | null>(null)
 
@@ -27,8 +27,8 @@ export const CharacterDetailPage: FC = () => {
       <span style={{ display: 'flex', alignItems: 'center'}}>
         Name: {character.name}
         <Tag style={{ marginLeft: 7, marginTop: 8 }} color={character.status === 'Alive' ? '#87d068' : '#f50'}>
-        {character.status}
-      </Tag>
+          {character.status}
+        </Tag>
       </span>
     </Typography.Title>
   </div>
