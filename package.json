@@ -42,6 +42,7 @@
     "webpack-merge": "^5.9.0"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@babel/core": "^7.23.0",
     "@fontsource/roboto": "^5.0.8",
     "antd": "^5.11.4",
