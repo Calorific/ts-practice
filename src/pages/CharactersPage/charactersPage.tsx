@@ -19,7 +19,7 @@ export const CharactersPage: FC = () => {
       : null
 
   return <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-    <Typography.Title style={{ textAlign: 'center' }}>Герои</Typography.Title>
+    <Typography.Title style={{ textAlign: 'center' }}>Characters</Typography.Title>
     <CardList items={items} />
   </div>
 }
