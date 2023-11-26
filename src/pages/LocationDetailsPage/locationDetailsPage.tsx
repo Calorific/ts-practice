@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { HttpService } from '../../shared/api/methods/methods'
 import { Card, Tag, Typography } from 'antd'
 import { Location } from '../../shared/api/methods/types'
+import { GoBackButton } from '../../features/goBackButton/goBackButton'
 
 export const LocationDetailsPage: FC = () => {
   const { id } = useParams()
@@ -32,7 +33,9 @@ export const LocationDetailsPage: FC = () => {
   </div>
 
   return <div style={{ margin: '0 20px'}}>
-    <Typography.Title>Location Page</Typography.Title>
+    <Typography.Title style={{ display: 'flex', justifyContent: 'space-between' }}>
+      Location Page <GoBackButton />
+    </Typography.Title>
     <Card style={{ maxWidth: '600px', padding: '20px' }} title={title}>
       <Typography.Title level={3}>Dimension: {location.dimension}</Typography.Title>
     </Card>

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Episode } from '../../shared/api/methods/types'
 import { HttpService } from '../../shared/api/methods/methods'
 import { Card, Tag, Typography } from 'antd'
+import { GoBackButton } from '../../features/goBackButton/goBackButton'
 
 export const EpisodeDetailsPage: FC = () => {
   const { id } = useParams()
@@ -34,7 +35,9 @@ export const EpisodeDetailsPage: FC = () => {
   </div>
 
   return <div style={{ margin: '0 20px'}}>
-    <Typography.Title>Episode Page</Typography.Title>
+    <Typography.Title style={{ display: 'flex', justifyContent: 'space-between' }}>
+      Episode Page <GoBackButton />
+    </Typography.Title>
     <Card style={{ maxWidth: '600px', padding: '20px' }} title={title}>
       <Typography.Title level={3}>Air date: {episode.air_date}</Typography.Title>
     </Card>

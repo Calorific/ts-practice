@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Character } from '../../shared/api/methods/types'
 import { HttpService } from '../../shared/api/methods/methods'
 import { Card, Tag, Typography } from 'antd'
+import { GoBackButton } from '../../features/goBackButton/goBackButton'
 
 export const CharacterDetailsPage: FC = () => {
   const { id } = useParams()
@@ -34,7 +35,9 @@ export const CharacterDetailsPage: FC = () => {
   </div>
 
   return <div style={{ margin: '0 20px'}}>
-    <Typography.Title>Character Page</Typography.Title>
+    <Typography.Title style={{ display: 'flex', justifyContent: 'space-between' }}>
+      Character Page <GoBackButton />
+    </Typography.Title>
     <Card style={{ maxWidth: '600px', padding: '20px' }} cover={<img alt="example" src={character.image} />} title={title}>
       <Typography.Title level={3}>Species: {character.species}</Typography.Title>
       <Typography.Title level={4}>{character.type}</Typography.Title>
