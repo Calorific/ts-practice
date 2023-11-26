@@ -16,7 +16,7 @@ const items: MenuProps['items'] = [
     key: '/locations',
   },
   {
-    label: <NavLink to=''>Episodes</NavLink>,
+    label: <NavLink to='episodes'>Episodes</NavLink>,
     key: '/episodes',
   }
 ]

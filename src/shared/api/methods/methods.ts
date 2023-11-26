@@ -16,22 +16,27 @@ const fetchCharacterById = async (id: string): Promise<Character | null> => {
 }
 
 const fetchEpisodes = async (): Promise<Episode[]> => {
-  await delay(500)
+  await delay(400)
   return Episodes
 }
 
+const fetchEpisodeById = async (id: string): Promise<Episode | null> => {
+  await delay(400)
+  return Episodes.find(c => c.id.toString() === id) || null
+}
+
 const fetchLocations = async (): Promise<Location[]> => {
-  await delay(500)
+  await delay(400)
   return Locations
 }
 
 const fetchLocationById = async (id: string): Promise<Location | null> => {
-  await delay(0)
+  await delay(400)
   return Locations.find(c => c.id.toString() === id) || null
 }
 
 export const HttpService = {
   fetchCharacters, fetchCharacterById,
   fetchEpisodes, fetchLocationById,
-  fetchLocations
+  fetchLocations, fetchEpisodeById
 }
