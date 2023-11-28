@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useLocalStorageResult } from './types'
 
 export const useLocalStorage = <S>(key: string): useLocalStorageResult => {
-  const [data, setData] = useState<string>('')
+  const [data, setData] = useState<string>(localStorage.getItem(key) || '')
 
   const setItem = (newData: string) => {
     localStorage.setItem(key, newData)
