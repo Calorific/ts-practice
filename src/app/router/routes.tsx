@@ -7,11 +7,13 @@ import { LocationsPage } from '../../pages/LocationsPage/locationsPage'
 import { LocationDetailsPage } from '../../pages/LocationDetailsPage/locationDetailsPage'
 import { EpisodesPage } from '../../pages/EpisodesPage/episodesPage'
 import { EpisodeDetailsPage } from '../../pages/EpisodeDetailsPage/episodeDetailsPage'
+import { PrivateRoute } from '../../shared/ui/privateRoute/privateRoute'
+import { AuthPage } from '../../pages/AuthPage/AuthPage'
 
 export const routes: RouteObject[] = [
   {
     path: '',
-    element: <MainLayout />,
+    element: <PrivateRoute><MainLayout /></PrivateRoute>,
     children: [
       {
         path: '',
@@ -46,5 +48,13 @@ export const routes: RouteObject[] = [
         element: <Navigate to='/' replace />
       }
     ]
+  },
+  {
+    path: 'auth',
+    element: <Navigate to='/auth/login' />
+  },
+  {
+    path: 'auth/:type',
+    element: <AuthPage />
   }
 ]

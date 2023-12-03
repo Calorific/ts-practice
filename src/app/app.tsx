@@ -3,7 +3,10 @@ import { useRoutes } from 'react-router-dom'
 import { routes } from './router/routes'
 import './reset.css'
 import '@fontsource/roboto'
+import { AuthProvider } from './context/auth/authProvider'
 
 export const App: FC = () => {
-  return useRoutes(routes)
+  return <AuthProvider>
+    {useRoutes(routes)}
+  </AuthProvider>
 }
