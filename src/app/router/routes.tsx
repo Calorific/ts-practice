@@ -1,14 +1,18 @@
+import { PrivateRoute } from '../../features/PrivateRoute/privateRoute'
+import React, { lazy } from 'react'
 import { Navigate, RouteObject } from 'react-router-dom'
 import { MainLayout } from '../layouts/MainLayout/mainLayout'
-import { HomePage } from '../../pages/HomePage/homePage'
-import { CharactersPage } from '../../pages/CharactersPage/charactersPage'
-import { CharacterDetailsPage } from '../../pages/CharacterDetailsPage/characterDetailsPage'
-import { LocationsPage } from '../../pages/LocationsPage/locationsPage'
-import { LocationDetailsPage } from '../../pages/LocationDetailsPage/locationDetailsPage'
-import { EpisodesPage } from '../../pages/EpisodesPage/episodesPage'
-import { EpisodeDetailsPage } from '../../pages/EpisodeDetailsPage/episodeDetailsPage'
-import { PrivateRoute } from '../../shared/ui/privateRoute/privateRoute'
-import { AuthPage } from '../../pages/AuthPage/AuthPage'
+
+const HomePage = lazy(() => import('../../pages/HomePage/homePage.tsx').then(m => ({ default: m.HomePage})))
+const CharactersPage = lazy(() => import('../../pages/CharactersPage/charactersPage.tsx').then(m => ({ default: m.CharactersPage})))
+const CharacterDetailsPage = lazy(() => import('../../pages/CharacterDetailsPage/characterDetailsPage.tsx').then(m => ({ default: m.CharacterDetailsPage})))
+const LocationsPage = lazy(() => import('../../pages/LocationsPage/locationsPage.tsx').then(m => ({ default: m.LocationsPage})))
+const LocationDetailsPage = lazy(() => import('../../pages/LocationDetailsPage/locationDetailsPage.tsx').then(m => ({ default: m.LocationDetailsPage})))
+const EpisodesPage = lazy(() => import('../../pages/EpisodesPage/episodesPage.tsx').then(m => ({ default: m.EpisodesPage})))
+const EpisodeDetailsPage = lazy(() => import('../../pages/EpisodeDetailsPage/episodeDetailsPage.tsx').then(m => ({ default: m.EpisodeDetailsPage})))
+const AuthPage = lazy(() => import('../../pages/AuthPage/authPage.tsx').then(m => ({ default: m.AuthPage})))
+
+
 
 export const routes: RouteObject[] = [
   {

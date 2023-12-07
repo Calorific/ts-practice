@@ -6,4 +6,6 @@ export interface CardListItem {
 
 export interface CardListProps {
   items: CardListItem[] | null
+  triggerNodeRef?: any
+  triggerNodePosition?: number
 }

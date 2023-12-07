@@ -46,6 +46,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const logOut = (callback?: Function) => {
     setUser(null)
+    localStorage.removeItem('currentUser')
     callback?.()
   }
 

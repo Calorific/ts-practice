@@ -1,25 +1,25 @@
 import { FC, useEffect, useState } from 'react'
-import { Typography } from 'antd'
-import { HttpService } from '../../shared/api/methods/methods'
+import { Alert, Typography } from 'antd'
 import { CardList } from '../../shared/ui/CardList/cardList'
 import { CardListItem } from '../../shared/ui/CardList/types'
 import { Location } from '../../shared/api/methods/types'
 import { sortItemsByDate } from '../../features/toggleSort/methods'
-import { Order } from '../../features/toggleSort/types'
+import { Order, Sortable } from '../../features/toggleSort/types'
 import { useSearchParams } from 'react-router-dom'
 import { ToggleSort } from '../../features/toggleSort/toggleSort'
+import { useInfiniteScroll } from '../../shared/hooks/useInfiniteScroll/useInfiniteScroll.ts'
+import { Loader } from '../../shared/ui/Loader/loader.tsx'
 
 export const LocationsPage: FC = () => {
   const [searchParams] = useSearchParams()
+  const { data, loading, error, hasMore, loadTriggerNode } = useInfiniteScroll<Location>('https://rickandmortyapi.com/api/location')
   const [locations, setLocations] = useState<Location[] | null>(null)
 
   useEffect(() => {
-    (async () => {
-      const data = await HttpService.fetchLocations()
-      const sorted = sortItemsByDate(data, searchParams.get('order') as Order || 'desc') as Location[]
-      setLocations(sorted)
-    })()
-  }, [])
+    if (!data) return
+    const sorted = sortItemsByDate(data as Sortable[], searchParams.get('order') as Order || 'desc') as Location[]
+    setLocations(sorted)
+  }, [data])
 
   useEffect(() => {
     orderChange()
@@ -39,6 +39,15 @@ export const LocationsPage: FC = () => {
     <Typography.Title style={{ textAlign: 'center' }}>
       Locations <ToggleSort />
     </Typography.Title>
-    <CardList items={items} />
+    <CardList triggerNodeRef={loadTriggerNode} triggerNodePosition={4} items={items} />
+    {loading ? <div style={{ padding: 25, display: 'flex', justifyContent: 'center' }}><Loader /></div> : null}
+    {!hasMore ? <Typography.Title level={4} style={{ textAlign: 'center'}}>All locations were loaded</Typography.Title> : null}
+    {error ? <Alert
+        style={{ marginTop: 20, marginRight: 40, marginLeft: 40 }}
+        message="Error"
+        description={error.message}
+        type="error"
+        showIcon
+    /> : null}
   </div>
 }

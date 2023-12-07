@@ -5,7 +5,24 @@ export interface Character {
   species: string
   type: string
   gender: string
+  origin: {
+    name: string
+    url: string
+  }
+  location: {
+    name: string
+    url: string
+  }
   image: string
+  episode: string[]
+  created: string
+}
+
+export interface Location {
+  id: number
+  name: string
+  type: string
+  dimension: string
   created: string
 }
 
@@ -17,12 +34,6 @@ export interface Episode {
   created: string
 }
 
-export interface Location {
-  id: number
-  name: string
-  type: string
-  dimension: string
-  created: string
-}
+
 
 

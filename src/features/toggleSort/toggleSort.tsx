@@ -6,7 +6,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 export const ToggleSort: FC = () => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const [sort, setSort] = useState<Order>(searchParams.get('order') as Order || 'desc')
+  const [sort, setSort] = useState<Order>(searchParams.get('order') as Order || 'asc')
 
   useEffect(() => {
     navigate(`?order=${sort}`)

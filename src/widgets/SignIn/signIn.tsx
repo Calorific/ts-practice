@@ -3,12 +3,13 @@ import { TextInput } from '../../shared/ui/TextInput/textInput.'
 import { Button } from '../../shared/ui/Button/Button'
 import { FormComponent } from '../../shared/ui/FormComponent/formComponent'
 import { signInValidationScheme } from './validations'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../app/context/auth/authProvider'
 import { SignInFormData } from './types'
 
 export const SignIn: FC = () => {
   const navigate = useNavigate()
+  const location = useLocation()
   const auth = useAuth()
 
   const handleToggle = () => {
@@ -20,7 +21,8 @@ export const SignIn: FC = () => {
     if (errors) {
       return errors
     }
-    navigate('/')
+    console.log(location.state?.from)
+    navigate(location.state?.from || '/')
   }
 
   return <div  style={{ width: 310 }}>

@@ -1,42 +1,39 @@
 import { Character, Episode, Location } from './types'
-import Characters from '../data/characters.json'
-import Episodes from '../data/episodes.json'
-import Locations from '../data/locations.json'
 
 const delay = (ms: number): Promise<void> => new Promise(r => setTimeout(r, ms))
 
-const fetchCharacters = async (): Promise<Character[]> => {
-  await delay(400)
-  return Characters
-}
-
 const fetchCharacterById = async (id: string): Promise<Character | null> => {
-  await delay(400)
-  return Characters.find(c => c.id.toString() === id) || null
-}
-
-const fetchEpisodes = async (): Promise<Episode[]> => {
-  await delay(400)
-  return Episodes
-}
-
-const fetchEpisodeById = async (id: string): Promise<Episode | null> => {
-  await delay(400)
-  return Episodes.find(c => c.id.toString() === id) || null
-}
-
-const fetchLocations = async (): Promise<Location[]> => {
-  await delay(400)
-  return Locations
+  try {
+    const response = await fetch('https://rickandmortyapi.com/api/character/' + id)
+    const data = await response.json()
+    return data.error ? null : data
+  } catch (e: any) {
+    return null
+  }
 }
 
 const fetchLocationById = async (id: string): Promise<Location | null> => {
-  await delay(400)
-  return Locations.find(c => c.id.toString() === id) || null
+  try {
+    const response = await fetch('https://rickandmortyapi.com/api/location/' + id)
+    const data = await response.json()
+    return data.error ? null : data
+  } catch (e: any) {
+    return null
+  }
+}
+
+const fetchEpisodeById = async (id: string): Promise<Episode | null> => {
+  try {
+    const response = await fetch('https://rickandmortyapi.com/api/episode/' + id)
+    const data = await response.json()
+    return data.error ? null : data
+  } catch (e: any) {
+    return null
+  }
 }
 
 export const HttpService = {
-  fetchCharacters, fetchCharacterById,
-  fetchEpisodes, fetchLocationById,
-  fetchLocations, fetchEpisodeById
+  fetchCharacterById,
+  fetchLocationById,
+  fetchEpisodeById
 }
